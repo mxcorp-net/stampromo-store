@@ -45,4 +45,9 @@ export class AppComponent {
     }
 
   }
+
+  openModal(id: string) {
+    alert('hola')
+    $(`#${id}`).modal('show')
+  }
 }

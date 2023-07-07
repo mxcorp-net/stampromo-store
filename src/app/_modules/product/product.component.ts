@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ProductModel} from "../../_models/product.model";
 declare var $: any;
 @Component({
   selector: 'app-product',
@@ -6,13 +7,14 @@ declare var $: any;
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
+  objectProduct: ProductModel[] = [];
 
   constructor() { }
 
   ngOnInit(): void {
 
-    var sliderrange = $('#slider-range');
-    var amountprice = $('#amount');
+    let sliderrange = $('#slider-range');
+    let amountprice = $('#amount');
     $(function() {
       sliderrange.slider({
         range: true,
