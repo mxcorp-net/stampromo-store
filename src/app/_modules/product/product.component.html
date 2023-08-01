@@ -165,14 +165,14 @@
             <div class="tab-content jump">
               <div id="shop-1" class="tab-pane active">
                 <div class="row ht-products">
-                  <div class="col-xl-4 col-md-6 col-lg-6 col-sm-6">
-                    <app-product-list-item [objet]="objectProduct"></app-product-list-item>
+                  <div class="col-xl-4 col-md-6 col-lg-6 col-sm-6" *ngFor="let product of objectProduct; let i = index">
+                    <app-product-list-item [objet]="product" ></app-product-list-item>
                   </div>
                 </div>
               </div>
               <div id="shop-2" class="tab-pane">
-                <div class="shop-list-wrap shop-list-mrg2 shop-list-mrg-none mb-30">
-                  <app-product-list-horizontal [objet]="objectProduct"></app-product-list-horizontal>
+                <div class="shop-list-wrap shop-list-mrg2 shop-list-mrg-none mb-30" *ngFor="let product of objectProduct; let i = index">
+                  <app-product-list-horizontal [objet]="product" ></app-product-list-horizontal>
                 </div>
               </div>
             </div>

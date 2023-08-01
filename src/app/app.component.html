@@ -16,6 +16,7 @@
                 <ul>
                   <li><a routerLink="/"> Home </a></li>
                   <li><a routerLink="/product"> Product </a></li>
+                  <li><a routerLink="/contact"> Contact </a></li>
                 </ul>
               </nav>
             </div>
@@ -26,7 +27,7 @@
                 <a class="search-active" href="#"><i class="sli sli-magnifier"></i></a>
               </div>
               <div class="cart-wrap">
-                <button class="icon-cart-active" (click)="openModal('exampleModal')">
+                <button class="icon-cart-active" (click)="carModal()">
                                     <span class="icon-cart">
                                         <i class="sli sli-bag"></i>
                                         <span class="count-style">02</span>
@@ -38,7 +39,7 @@
                 <div class="shopping-cart-content">
                   <div class="shopping-cart-top">
                     <h4>Shoping Cart</h4>
-                    <a class="cart-close" href="#"><i class="sli sli-close"></i></a>
+                    <a class="cart-close" href="javascript:void(0)" (click)="carModal()"><i class="sli sli-close"></i></a>
                   </div>
                   <ul>
                     <li class="single-shopping-cart">
@@ -77,7 +78,7 @@
                   </div>
                 </div>
               </div>
-              <div class="setting-wrap">
+              <div class="setting-wrap" (click)="settingDrop()">
                 <button class="setting-active">
                   <i class="sli sli-settings"></i>
                 </button>

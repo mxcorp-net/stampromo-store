@@ -1,17 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductModel} from "../../_models/product.model";
+import {ProductService} from "../../_services/product.service";
+import {Observable} from "rxjs";
 declare var $: any;
+
+class Subscription {
+}
+
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-  objectProduct: ProductModel[] = [];
+  objectProduct: ProductModel[] = []; //
+  subscription: Subscription | undefined;
 
-  constructor() { }
+  constructor(private productServices: ProductService) {}
 
   ngOnInit(): void {
+    this.subscription = this.productServices.where({}).subscribe(
+      (data: ProductModel[]) => {
+        this.objectProduct = data; // Asignar los datos recibidos a objectProduct
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+
 
     let sliderrange = $('#slider-range');
     let amountprice = $('#amount');

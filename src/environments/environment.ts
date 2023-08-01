@@ -3,7 +3,14 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  auth: {
+    api: 'http://127.0.0.1:8001/api',
+    userInfo: 'msAuthServiceUser'
+  },
+  products: {
+    api: 'http://service.stampromo.net/api/store/',
+  },
 };
 
 /*

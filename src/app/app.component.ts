@@ -46,8 +46,32 @@ export class AppComponent {
 
   }
 
-  openModal(id: string) {
-    alert('hola')
-    $(`#${id}`).modal('show')
+  carModal() {
+    let $thisOld = $('.setting-active');
+    if ($thisOld.parent().hasClass('show')) {
+      $thisOld.siblings('.setting-content').removeClass('show').slideUp().parent().removeClass('show');
+    }
+
+    let $this = $('.icon-cart-active');
+    if (!$this.parent().hasClass('show')) {
+      $this.siblings('.shopping-cart-content').addClass('show').parent().addClass('show');
+    } else {
+      $this.siblings('.shopping-cart-content').removeClass('show').parent().removeClass('show');
+    }
+  }
+
+  settingDrop() {
+    let $thisOld = $('.icon-cart-active');
+    if ($thisOld.parent().hasClass('show')) {
+      $thisOld.siblings('.shopping-cart-content').removeClass('show').parent().removeClass('show');
+    }
+
+
+    let $this = $('.setting-active');
+    if (!$this.parent().hasClass('show')) {
+      $this.siblings('.setting-content').addClass('show').slideDown().parent().addClass('show');
+    } else {
+      $this.siblings('.setting-content').removeClass('show').slideUp().parent().removeClass('show');
+    }
   }
 }

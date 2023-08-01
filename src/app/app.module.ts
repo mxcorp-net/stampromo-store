@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {AppComponent} from './app.component';
 import {RouterModule, Routes} from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 
 //Modules
@@ -20,6 +21,9 @@ import {UserModule} from "./_modules/user/user.module";
 import * as path from "path";
 import { ProductListHorizontalComponent } from './_components/product-list-horizontal/product-list-horizontal.component';
 import { LoginComponent } from './_modules/auth/login/login.component';
+import { ContactComponent } from './_modules/contact/contact.component';
+import {CommonModule} from "@angular/common";
+
 
 
 const routes: Routes = [
@@ -31,7 +35,8 @@ const routes: Routes = [
   {path: 'cart', component: CartShoppingComponent},
   {path: 'wishlist', component: WishlistComponent},
   {path: 'user', component: UserModule},
-  {path: 'login', component: LoginComponent}
+  {path: 'login', component: LoginComponent},
+  {path: 'contact', component: ContactComponent},
 ];
 
 @NgModule({
@@ -46,11 +51,14 @@ const routes: Routes = [
     ProductDetailComponent,
     ProductListItemComponent,
     ProductListHorizontalComponent,
-    LoginComponent
+    LoginComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes)
+    CommonModule,
+    HttpClientModule,
+    RouterModule.forRoot(routes),
   ],
   providers: [],
   bootstrap: [AppComponent],
