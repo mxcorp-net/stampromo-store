@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import {ProductModel} from "../../../_models/product.model";
+import {ProductService} from "../../../_services/product.service";
+import { ActivatedRoute, Params } from '@angular/router';
+
+class Subscription {
+}
 
 @Component({
   selector: 'app-product-detail',
@@ -7,9 +13,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductDetailComponent implements OnInit {
 
-  constructor() { }
+  id :string = "";
+  objectProduct: any; //
+  subscription: Subscription | undefined;
+
+  constructor(private productServices: ProductService,
+              private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.route.params.subscribe((params: Params) => {
+      this.id = params['id'];
+    });
+
+    this.subscription = this.productServices.find(this.id)?.subscribe(
+      (data: ProductModel) => {
+        this.objectProduct = data
+        console.log(data)
+      },
+      (error) => {
+        console.log(error);
+      }
+    )
   }
 
 }

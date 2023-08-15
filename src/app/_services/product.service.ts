@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {ProductModel} from "../_models/product.model";
+import * as http from "http";
 
 @Injectable({
   providedIn: 'root'
@@ -26,8 +27,8 @@ export class ProductService implements CoreService{
     return undefined;
   }
 
-  find(id: string): Observable<any> | undefined {
-    return undefined;
+  find(id: string): Observable<ProductModel> | undefined {
+    return this.http.get<ProductModel>(`${this.prefix}products\\${id}`);
   }
 
   update(query: {}): Observable<any> | undefined {
@@ -35,6 +36,6 @@ export class ProductService implements CoreService{
   }
 
   where(params: {}): Observable<ProductModel[]> {
-    return this.http.get<any>(`${this.prefix}/products`, { params });
+    return this.http.get<any>(`${this.prefix}products`, { params });
   }
 }

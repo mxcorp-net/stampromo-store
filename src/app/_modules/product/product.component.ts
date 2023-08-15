@@ -15,6 +15,7 @@ class Subscription {
 export class ProductComponent implements OnInit {
   objectProduct: ProductModel[] = []; //
   subscription: Subscription | undefined;
+  modalProduct: ProductModel = new ProductModel();
 
   constructor(private productServices: ProductService) {}
 
@@ -44,6 +45,20 @@ export class ProductComponent implements OnInit {
       amountprice.val("$" + sliderrange.slider("values", 0) +
         " - $" + sliderrange.slider("values", 1));
     });
+  }
+
+  onChildEvent(id: number) {
+    console.log('ID recibido del componente hijo:', id);
+
+    this.subscription = this.productServices.find(id.toString())?.subscribe(
+      (data: ProductModel) => {
+        this.modalProduct = data
+        this.modalProduct.price = Number(this.modalProduct.price);
+      },
+      (error) => {
+        console.log(error);
+      }
+    )
   }
 
 }
